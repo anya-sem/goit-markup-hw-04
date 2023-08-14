@@ -120,7 +120,7 @@ nav {
 }
 .header-list-item:hover,
 .header-list-item:focus {
-  color: var(--pressed-state);
+  color: var(--pressed-state) #404bbf;
 }
 .header-list-item:hover::after,
 .header-list-item:focus::after {
@@ -164,6 +164,7 @@ nav {
 }
 .footer-container {
   display: flex;
+  align-items: baseline;
 }
 .footer-content-container {
   margin-right: 120px;
@@ -202,17 +203,8 @@ nav {
 .footer-socials-list-item {
   width: 40px;
   height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
   background-color: var(--primary-brand);
   border-radius: 50%;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.footer-socials-list-item:hover,
-.footer-socials-list-item:focus {
-  background-color: var(--success);
 }
 .footer-socials-link {
   width: 100%;
@@ -221,7 +213,15 @@ nav {
   justify-content: center;
   align-items: center;
   fill: var(--light);
+  background-color: var(--primary-brand);
+  border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.footer-socials-link:hover,
+.footer-socials-link:focus {
+  background-color: var(--success);
+}
+
 /* Main */
 
 /* Hero */
@@ -317,14 +317,17 @@ nav {
   align-items: center;
   width: 24px;
   height: 24px;
+  color: currentColor;
   border-radius: 50%;
   background-color: var(--accent);
   border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   top: 24px;
   right: 24px;
+  padding: 0;
 }
 .modal-button:hover,
 .modal-button:focus {
@@ -509,7 +512,7 @@ nav {
   align-items: center;
   border-radius: 4px;
   border: 1px solid var(--subtle-text);
-  fill: var(--subtle-text);
+  color: var(--subtle-text);
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -517,9 +520,11 @@ nav {
 .clients-list-link:hover,
 .clients-list-link:focus {
   border-color: var(--pressed-state);
-  fill: var(--pressed-state);
+  color: var(--pressed-state);
 }
-
+.clients-icon {
+  fill: currentColor;
+}
 /* Portfolio */
 
 .main-section {
@@ -567,18 +572,17 @@ nav {
   background-color: var(--white-backgound);
   width: calc((100% - 2 * 24) / 3);
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.works.link {
   display: block;
   cursor: pointer;
 }
-.works-list-item:hover,
-.works-list-item:focus {
+
+.works-link:hover,
+.works-link:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
-.works-list-item:hover .overlay,
-.works-list-item:focus .overlay {
+.works-link:hover .overlay,
+.works-link:focus .overlay {
   transform: translateY(0%);
 }
 .works-box {
@@ -586,6 +590,11 @@ nav {
   overflow: hidden;
 }
 .overlay {
+  color: var(--light);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+
   position: absolute;
   top: 0;
   left: 0;
@@ -601,12 +610,6 @@ nav {
   padding: 40px 32px;
 
   background: var(--primary-brand);
-}
-.overlay-text {
-  color: var(--light);
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
 }
 
 .works-card-content {
