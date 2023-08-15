@@ -115,15 +115,9 @@ nav {
   display: block;
   padding: 24px 0;
   position: relative;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) background-color,
-    250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.header-list-item:hover,
-.header-list-item:focus {
-  color: var(--pressed-state) #404bbf;
-}
-.header-list-item:hover::after,
-.header-list-item:focus::after {
+.header-list-item::after {
   content: '';
   display: block;
   width: 100%;
@@ -133,7 +127,21 @@ nav {
   position: absolute;
   bottom: -1px;
   left: 0;
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+.header-list-item:hover::after,
+.header-list-item:focus::after,
+.header-list-item.current::after {
+  opacity: 1;
+}
+
+.header-list-item:hover,
+.header-list-item:focus,
+.header-list-item.current {
+  color: var(--pressed-state);
+}
+
 .address {
   font-style: normal;
   display: flex;
@@ -321,28 +329,24 @@ nav {
   border-radius: 50%;
   background-color: var(--accent);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  fill: var(--dark);
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
   top: 24px;
   right: 24px;
   padding: 0;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-button:hover,
 .modal-button:focus {
   background-color: var(--pressed-state);
   border: none;
-}
-.modal-button-icon {
-  fill: var(--dark);
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.modal-button-icon:hover,
-.modal-button-icon:focus {
   fill: var(--white-backgound);
 }
 
 /* Section 1 - Benefits */
+
 .benefits-section {
   padding: 120px 0;
 }
